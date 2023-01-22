@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  tmnkhubspo:
+    container_name: respre
+    build: .
+    volumes:
+      - ./:/usr/app
+    tty: true
+    stdin_open: true
