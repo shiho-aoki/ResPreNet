@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM pytorch/pytorch:v0.2
 
 RUN apt-get update \
     && apt-get dist-upgrade -y \
@@ -7,16 +7,18 @@ RUN apt-get update \
         make \
         build-essential \
         vim \
-        curl \
-        python3-pip
+        curl
 
 # Env vars
 ENV PYTHONIOENCODING=utf-8
 ENV LANG=C.UTF-8
 
 # Update python
-RUN python -m pip install --upgrade pip setuptools wheel --no-cache-dir
+# RUN python -m pip install --upgrade pip setuptools wheel --no-cache-dir
 #libs
-RUN python -m pip install numba tourch
+
+RUN pip install scipy
+RUN pip install llvmlite==0.31.0
+RUN pip install numba
 
 WORKDIR /usr/app/
